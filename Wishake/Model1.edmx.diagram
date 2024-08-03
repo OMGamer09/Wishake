@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c8747422eafd49359075d1c9fed34961" Name="Diagram1">
+        <EntityTypeShape EntityType="masterModel.CAP_COLORS" Width="1.5" PointX="10.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.CAP" Width="1.5" PointX="13" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.CART" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.CITy" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.COUNTRy" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.CURRENT" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.CUSTOMER" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.DESIGN" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.FONT_COLORS" Width="1.5" PointX="8.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.FONT" Width="1.5" PointX="8.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.MATERIAL" Width="1.5" PointX="10.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.ORDER" Width="1.5" PointX="7.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.PAYMENT_METHODS" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.SEARCH" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.STYLE" Width="1.5" PointX="10.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.TEXT" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.USER" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.MSreplication_options" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.spt_fallback_db" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.spt_fallback_dev" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.spt_fallback_usg" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.spt_monitor" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="masterModel.color" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.Material1" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.Style1" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__CURRENTS__Placed__118A8A8C" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__ORDERS__CartID__155B1B70" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK_CustomerCart" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.City1" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.Country1" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__CURRENTS__Includ__127EAEC5" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__ORDERS__PlacedBy__164F3FA9" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__SEARCHES__UsedBy__08F5448B" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__USERS__Mail__033C6B35" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__DESIGNS__0BD1B136" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK_design" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FontColor" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FontType" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.PaymentMethod" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

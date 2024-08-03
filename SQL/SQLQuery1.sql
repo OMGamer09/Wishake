@@ -1,0 +1,2 @@
+﻿DELETE FROM Orders
+DBCC CHECKIDENT ('Orders', RESEED, 0)

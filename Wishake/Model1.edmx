@@ -1,0 +1,1490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CAP_COLORS">
+          <Key>
+            <PropertyRef Name="color" />
+          </Key>
+          <Property Name="color" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CAPS">
+          <Key>
+            <PropertyRef Name="Barcode" />
+          </Key>
+          <Property Name="Barcode" Type="int" Nullable="false" />
+          <Property Name="Style" Type="varchar" MaxLength="20" />
+          <Property Name="Color" Type="varchar" MaxLength="20" />
+          <Property Name="Material" Type="varchar" MaxLength="10" />
+          <Property Name="BasePrice" Type="money" />
+          <Property Name="Size" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="CARTS">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DeliveryType" Type="varchar" MaxLength="15" />
+          <Property Name="DeliveryCost" Type="money" />
+          <Property Name="BuiltBy" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="CITIES">
+          <Key>
+            <PropertyRef Name="City" />
+          </Key>
+          <Property Name="City" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COUNTRIES">
+          <Key>
+            <PropertyRef Name="Country" />
+          </Key>
+          <Property Name="Country" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CURRENTS">
+          <Key>
+            <PropertyRef Name="Barcode" />
+            <PropertyRef Name="FinalProduct" />
+          </Key>
+          <Property Name="Barcode" Type="int" Nullable="false" />
+          <Property Name="FinalProduct" Type="int" Nullable="false" />
+          <Property Name="AmountPurchased" Type="int" Nullable="false" />
+          <Property Name="GeneratedPrice" Type="money" />
+          <Property Name="PlacedIn" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Includes" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CUSTOMERS">
+          <Key>
+            <PropertyRef Name="Mail" />
+          </Key>
+          <Property Name="Mail" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="20" />
+          <Property Name="LastName" Type="varchar" MaxLength="20" />
+          <Property Name="Country" Type="varchar" MaxLength="20" />
+          <Property Name="City" Type="varchar" MaxLength="20" />
+          <Property Name="Street" Type="varchar" MaxLength="20" />
+          <Property Name="HomeNumber" Type="int" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="DESIGNS">
+          <Key>
+            <PropertyRef Name="DesignID" />
+          </Key>
+          <Property Name="DesignID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="FontType" Type="varchar" MaxLength="10" />
+          <Property Name="FontSize" Type="int" />
+          <Property Name="FontColor" Type="varchar" MaxLength="20" />
+          <Property Name="Picture" Type="varchar" MaxLength="10" />
+          <Property Name="IPAddress" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="EntranceDT" Type="date" Nullable="false" />
+          <Property Name="EntranceTime" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FONT_COLORS">
+          <Key>
+            <PropertyRef Name="FontColor" />
+          </Key>
+          <Property Name="FontColor" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FONTS">
+          <Key>
+            <PropertyRef Name="FontType" />
+          </Key>
+          <Property Name="FontType" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MATERIALS">
+          <Key>
+            <PropertyRef Name="Material" />
+          </Key>
+          <Property Name="Material" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.MSreplication_options' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MSreplication_options">
+          <Key>
+            <PropertyRef Name="optname" />
+            <PropertyRef Name="value" />
+            <PropertyRef Name="major_version" />
+            <PropertyRef Name="minor_version" />
+            <PropertyRef Name="revision" />
+            <PropertyRef Name="install_failures" />
+          </Key>
+          <Property Name="optname" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="value" Type="bit" Nullable="false" />
+          <Property Name="major_version" Type="int" Nullable="false" />
+          <Property Name="minor_version" Type="int" Nullable="false" />
+          <Property Name="revision" Type="int" Nullable="false" />
+          <Property Name="install_failures" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDERS">
+          <Key>
+            <PropertyRef Name="OrderNumber" />
+          </Key>
+          <Property Name="OrderNumber" Type="int" Nullable="false" />
+          <Property Name="PaymentMethod" Type="varchar" MaxLength="10" />
+          <Property Name="PaymentNumber" Type="int" />
+          <Property Name="DateOfOrder" Type="date" />
+          <Property Name="Coupon" Type="varchar" MaxLength="10" />
+          <Property Name="CardNumber" Type="int" />
+          <Property Name="ExpirationDate" Type="date" />
+          <Property Name="CVV" Type="int" />
+          <Property Name="CartID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PlacedBy" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PAYMENT_METHODS">
+          <Key>
+            <PropertyRef Name="PaymentMethod" />
+          </Key>
+          <Property Name="PaymentMethod" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SEARCHES">
+          <Key>
+            <PropertyRef Name="IPAddress" />
+            <PropertyRef Name="EntranceDT" />
+            <PropertyRef Name="EntranceTime" />
+          </Key>
+          <Property Name="IPAddress" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="EntranceDT" Type="date" Nullable="false" />
+          <Property Name="EntranceTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="SearchValue" Type="varchar" MaxLength="20" />
+          <Property Name="UsedBy" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_fallback_db' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="spt_fallback_db">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="dbid" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+          <Property Name="xfallback_dbid" Type="smallint" />
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="dbid" Type="smallint" Nullable="false" />
+          <Property Name="status" Type="smallint" Nullable="false" />
+          <Property Name="version" Type="smallint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_fallback_dev' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="spt_fallback_dev">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="low" />
+            <PropertyRef Name="high" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="phyname" />
+          </Key>
+          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+          <Property Name="xfallback_low" Type="int" />
+          <Property Name="xfallback_drive" Type="char" MaxLength="2" />
+          <Property Name="low" Type="int" Nullable="false" />
+          <Property Name="high" Type="int" Nullable="false" />
+          <Property Name="status" Type="smallint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="phyname" Type="varchar" MaxLength="127" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_fallback_usg' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="spt_fallback_usg">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="dbid" />
+            <PropertyRef Name="segmap" />
+            <PropertyRef Name="lstart" />
+            <PropertyRef Name="sizepg" />
+            <PropertyRef Name="vstart" />
+          </Key>
+          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+          <Property Name="xfallback_vstart" Type="int" />
+          <Property Name="dbid" Type="smallint" Nullable="false" />
+          <Property Name="segmap" Type="int" Nullable="false" />
+          <Property Name="lstart" Type="int" Nullable="false" />
+          <Property Name="sizepg" Type="int" Nullable="false" />
+          <Property Name="vstart" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="spt_monitor">
+          <Key>
+            <PropertyRef Name="lastrun" />
+            <PropertyRef Name="cpu_busy" />
+            <PropertyRef Name="io_busy" />
+            <PropertyRef Name="idle" />
+            <PropertyRef Name="pack_received" />
+            <PropertyRef Name="pack_sent" />
+            <PropertyRef Name="connections" />
+            <PropertyRef Name="pack_errors" />
+            <PropertyRef Name="total_read" />
+            <PropertyRef Name="total_write" />
+            <PropertyRef Name="total_errors" />
+          </Key>
+          <Property Name="lastrun" Type="datetime" Nullable="false" />
+          <Property Name="cpu_busy" Type="int" Nullable="false" />
+          <Property Name="io_busy" Type="int" Nullable="false" />
+          <Property Name="idle" Type="int" Nullable="false" />
+          <Property Name="pack_received" Type="int" Nullable="false" />
+          <Property Name="pack_sent" Type="int" Nullable="false" />
+          <Property Name="connections" Type="int" Nullable="false" />
+          <Property Name="pack_errors" Type="int" Nullable="false" />
+          <Property Name="total_read" Type="int" Nullable="false" />
+          <Property Name="total_write" Type="int" Nullable="false" />
+          <Property Name="total_errors" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STYLES">
+          <Key>
+            <PropertyRef Name="Style" />
+          </Key>
+          <Property Name="Style" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TEXTS">
+          <Key>
+            <PropertyRef Name="DesignID" />
+            <PropertyRef Name="Side" />
+          </Key>
+          <Property Name="DesignID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Side" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Content" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="Mail" />
+          </Key>
+          <Property Name="Mail" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PasswordID" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="City">
+          <End Role="CITIES" Type="Self.CITIES" Multiplicity="0..1" />
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITIES">
+              <PropertyRef Name="City" />
+            </Principal>
+            <Dependent Role="CUSTOMERS">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="color">
+          <End Role="CAP_COLORS" Type="Self.CAP_COLORS" Multiplicity="0..1" />
+          <End Role="CAPS" Type="Self.CAPS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAP_COLORS">
+              <PropertyRef Name="color" />
+            </Principal>
+            <Dependent Role="CAPS">
+              <PropertyRef Name="Color" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Country">
+          <End Role="COUNTRIES" Type="Self.COUNTRIES" Multiplicity="0..1" />
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTRIES">
+              <PropertyRef Name="Country" />
+            </Principal>
+            <Dependent Role="CUSTOMERS">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CURRENTS__Includ__127EAEC5">
+          <End Role="DESIGNS" Type="Self.DESIGNS" Multiplicity="1" />
+          <End Role="CURRENTS" Type="Self.CURRENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DESIGNS">
+              <PropertyRef Name="DesignID" />
+            </Principal>
+            <Dependent Role="CURRENTS">
+              <PropertyRef Name="Includes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CURRENTS__Placed__118A8A8C">
+          <End Role="CARTS" Type="Self.CARTS" Multiplicity="1" />
+          <End Role="CURRENTS" Type="Self.CURRENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARTS">
+              <PropertyRef Name="CartID" />
+            </Principal>
+            <Dependent Role="CURRENTS">
+              <PropertyRef Name="PlacedIn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DESIGNS__0BD1B136">
+          <End Role="SEARCHES" Type="Self.SEARCHES" Multiplicity="1" />
+          <End Role="DESIGNS" Type="Self.DESIGNS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEARCHES">
+              <PropertyRef Name="IPAddress" />
+              <PropertyRef Name="EntranceDT" />
+              <PropertyRef Name="EntranceTime" />
+            </Principal>
+            <Dependent Role="DESIGNS">
+              <PropertyRef Name="IPAddress" />
+              <PropertyRef Name="EntranceDT" />
+              <PropertyRef Name="EntranceTime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERS__CartID__155B1B70">
+          <End Role="CARTS" Type="Self.CARTS" Multiplicity="1" />
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARTS">
+              <PropertyRef Name="CartID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="CartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERS__PlacedBy__164F3FA9">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="1" />
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="Mail" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="PlacedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEARCHES__UsedBy__08F5448B">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="0..1" />
+          <End Role="SEARCHES" Type="Self.SEARCHES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="Mail" />
+            </Principal>
+            <Dependent Role="SEARCHES">
+              <PropertyRef Name="UsedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERS__Mail__033C6B35">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="Mail" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="Mail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerCart">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="0..1" />
+          <End Role="CARTS" Type="Self.CARTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="Mail" />
+            </Principal>
+            <Dependent Role="CARTS">
+              <PropertyRef Name="BuiltBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_design">
+          <End Role="DESIGNS" Type="Self.DESIGNS" Multiplicity="1" />
+          <End Role="TEXTS" Type="Self.TEXTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DESIGNS">
+              <PropertyRef Name="DesignID" />
+            </Principal>
+            <Dependent Role="TEXTS">
+              <PropertyRef Name="DesignID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FontColor">
+          <End Role="FONT_COLORS" Type="Self.FONT_COLORS" Multiplicity="0..1" />
+          <End Role="DESIGNS" Type="Self.DESIGNS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FONT_COLORS">
+              <PropertyRef Name="FontColor" />
+            </Principal>
+            <Dependent Role="DESIGNS">
+              <PropertyRef Name="FontColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FontType">
+          <End Role="FONTS" Type="Self.FONTS" Multiplicity="0..1" />
+          <End Role="DESIGNS" Type="Self.DESIGNS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FONTS">
+              <PropertyRef Name="FontType" />
+            </Principal>
+            <Dependent Role="DESIGNS">
+              <PropertyRef Name="FontType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Material">
+          <End Role="MATERIALS" Type="Self.MATERIALS" Multiplicity="0..1" />
+          <End Role="CAPS" Type="Self.CAPS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIALS">
+              <PropertyRef Name="Material" />
+            </Principal>
+            <Dependent Role="CAPS">
+              <PropertyRef Name="Material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PaymentMethod">
+          <End Role="PAYMENT_METHODS" Type="Self.PAYMENT_METHODS" Multiplicity="0..1" />
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAYMENT_METHODS">
+              <PropertyRef Name="PaymentMethod" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="PaymentMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Style">
+          <End Role="STYLES" Type="Self.STYLES" Multiplicity="0..1" />
+          <End Role="CAPS" Type="Self.CAPS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STYLES">
+              <PropertyRef Name="Style" />
+            </Principal>
+            <Dependent Role="CAPS">
+              <PropertyRef Name="Style" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="masterModelStoreContainer">
+          <EntitySet Name="CAP_COLORS" EntityType="Self.CAP_COLORS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAPS" EntityType="Self.CAPS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CARTS" EntityType="Self.CARTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CITIES" EntityType="Self.CITIES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COUNTRIES" EntityType="Self.COUNTRIES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CURRENTS" EntityType="Self.CURRENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DESIGNS" EntityType="Self.DESIGNS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FONT_COLORS" EntityType="Self.FONT_COLORS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FONTS" EntityType="Self.FONTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MATERIALS" EntityType="Self.MATERIALS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERS" EntityType="Self.ORDERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAYMENT_METHODS" EntityType="Self.PAYMENT_METHODS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEARCHES" EntityType="Self.SEARCHES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STYLES" EntityType="Self.STYLES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEXTS" EntityType="Self.TEXTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MSreplication_options" EntityType="Self.MSreplication_options" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MSreplication_options].[optname] AS [optname], 
+    [MSreplication_options].[value] AS [value], 
+    [MSreplication_options].[major_version] AS [major_version], 
+    [MSreplication_options].[minor_version] AS [minor_version], 
+    [MSreplication_options].[revision] AS [revision], 
+    [MSreplication_options].[install_failures] AS [install_failures]
+    FROM [dbo].[MSreplication_options] AS [MSreplication_options]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_fallback_db" EntityType="Self.spt_fallback_db" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [spt_fallback_db].[xserver_name] AS [xserver_name], 
+    [spt_fallback_db].[xdttm_ins] AS [xdttm_ins], 
+    [spt_fallback_db].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+    [spt_fallback_db].[xfallback_dbid] AS [xfallback_dbid], 
+    [spt_fallback_db].[name] AS [name], 
+    [spt_fallback_db].[dbid] AS [dbid], 
+    [spt_fallback_db].[status] AS [status], 
+    [spt_fallback_db].[version] AS [version]
+    FROM [dbo].[spt_fallback_db] AS [spt_fallback_db]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_fallback_dev" EntityType="Self.spt_fallback_dev" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [spt_fallback_dev].[xserver_name] AS [xserver_name], 
+    [spt_fallback_dev].[xdttm_ins] AS [xdttm_ins], 
+    [spt_fallback_dev].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+    [spt_fallback_dev].[xfallback_low] AS [xfallback_low], 
+    [spt_fallback_dev].[xfallback_drive] AS [xfallback_drive], 
+    [spt_fallback_dev].[low] AS [low], 
+    [spt_fallback_dev].[high] AS [high], 
+    [spt_fallback_dev].[status] AS [status], 
+    [spt_fallback_dev].[name] AS [name], 
+    [spt_fallback_dev].[phyname] AS [phyname]
+    FROM [dbo].[spt_fallback_dev] AS [spt_fallback_dev]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_fallback_usg" EntityType="Self.spt_fallback_usg" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [spt_fallback_usg].[xserver_name] AS [xserver_name], 
+    [spt_fallback_usg].[xdttm_ins] AS [xdttm_ins], 
+    [spt_fallback_usg].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+    [spt_fallback_usg].[xfallback_vstart] AS [xfallback_vstart], 
+    [spt_fallback_usg].[dbid] AS [dbid], 
+    [spt_fallback_usg].[segmap] AS [segmap], 
+    [spt_fallback_usg].[lstart] AS [lstart], 
+    [spt_fallback_usg].[sizepg] AS [sizepg], 
+    [spt_fallback_usg].[vstart] AS [vstart]
+    FROM [dbo].[spt_fallback_usg] AS [spt_fallback_usg]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_monitor" EntityType="Self.spt_monitor" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [spt_monitor].[lastrun] AS [lastrun], 
+    [spt_monitor].[cpu_busy] AS [cpu_busy], 
+    [spt_monitor].[io_busy] AS [io_busy], 
+    [spt_monitor].[idle] AS [idle], 
+    [spt_monitor].[pack_received] AS [pack_received], 
+    [spt_monitor].[pack_sent] AS [pack_sent], 
+    [spt_monitor].[connections] AS [connections], 
+    [spt_monitor].[pack_errors] AS [pack_errors], 
+    [spt_monitor].[total_read] AS [total_read], 
+    [spt_monitor].[total_write] AS [total_write], 
+    [spt_monitor].[total_errors] AS [total_errors]
+    FROM [dbo].[spt_monitor] AS [spt_monitor]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="City" Association="Self.City">
+            <End Role="CITIES" EntitySet="CITIES" />
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+          </AssociationSet>
+          <AssociationSet Name="color" Association="Self.color">
+            <End Role="CAP_COLORS" EntitySet="CAP_COLORS" />
+            <End Role="CAPS" EntitySet="CAPS" />
+          </AssociationSet>
+          <AssociationSet Name="Country" Association="Self.Country">
+            <End Role="COUNTRIES" EntitySet="COUNTRIES" />
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CURRENTS__Includ__127EAEC5" Association="Self.FK__CURRENTS__Includ__127EAEC5">
+            <End Role="DESIGNS" EntitySet="DESIGNS" />
+            <End Role="CURRENTS" EntitySet="CURRENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CURRENTS__Placed__118A8A8C" Association="Self.FK__CURRENTS__Placed__118A8A8C">
+            <End Role="CARTS" EntitySet="CARTS" />
+            <End Role="CURRENTS" EntitySet="CURRENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DESIGNS__0BD1B136" Association="Self.FK__DESIGNS__0BD1B136">
+            <End Role="SEARCHES" EntitySet="SEARCHES" />
+            <End Role="DESIGNS" EntitySet="DESIGNS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERS__CartID__155B1B70" Association="Self.FK__ORDERS__CartID__155B1B70">
+            <End Role="CARTS" EntitySet="CARTS" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERS__PlacedBy__164F3FA9" Association="Self.FK__ORDERS__PlacedBy__164F3FA9">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEARCHES__UsedBy__08F5448B" Association="Self.FK__SEARCHES__UsedBy__08F5448B">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="SEARCHES" EntitySet="SEARCHES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERS__Mail__033C6B35" Association="Self.FK__USERS__Mail__033C6B35">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerCart" Association="Self.FK_CustomerCart">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="CARTS" EntitySet="CARTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_design" Association="Self.FK_design">
+            <End Role="DESIGNS" EntitySet="DESIGNS" />
+            <End Role="TEXTS" EntitySet="TEXTS" />
+          </AssociationSet>
+          <AssociationSet Name="FontColor" Association="Self.FontColor">
+            <End Role="FONT_COLORS" EntitySet="FONT_COLORS" />
+            <End Role="DESIGNS" EntitySet="DESIGNS" />
+          </AssociationSet>
+          <AssociationSet Name="FontType" Association="Self.FontType">
+            <End Role="FONTS" EntitySet="FONTS" />
+            <End Role="DESIGNS" EntitySet="DESIGNS" />
+          </AssociationSet>
+          <AssociationSet Name="Material" Association="Self.Material">
+            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="CAPS" EntitySet="CAPS" />
+          </AssociationSet>
+          <AssociationSet Name="PaymentMethod" Association="Self.PaymentMethod">
+            <End Role="PAYMENT_METHODS" EntitySet="PAYMENT_METHODS" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="Style" Association="Self.Style">
+            <End Role="STYLES" EntitySet="STYLES" />
+            <End Role="CAPS" EntitySet="CAPS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CAP_COLORS">
+          <Key>
+            <PropertyRef Name="color" />
+          </Key>
+          <Property Name="color" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CAPS" Relationship="Self.color" FromRole="CAP_COLORS" ToRole="CAPS" />
+        </EntityType>
+        <EntityType Name="CAP">
+          <Key>
+            <PropertyRef Name="Barcode" />
+          </Key>
+          <Property Name="Barcode" Type="Int32" Nullable="false" />
+          <Property Name="Style" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Color" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Material" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BasePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Size" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CAP_COLORS" Relationship="Self.color" FromRole="CAPS" ToRole="CAP_COLORS" />
+          <NavigationProperty Name="MATERIAL1" Relationship="Self.Material1" FromRole="CAPS" ToRole="MATERIALS" />
+          <NavigationProperty Name="STYLE1" Relationship="Self.Style1" FromRole="CAPS" ToRole="STYLES" />
+        </EntityType>
+        <EntityType Name="CART">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeliveryType" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryCost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BuiltBy" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CURRENTS" Relationship="Self.FK__CURRENTS__Placed__118A8A8C" FromRole="CARTS" ToRole="CURRENTS" />
+          <NavigationProperty Name="ORDERS" Relationship="Self.FK__ORDERS__CartID__155B1B70" FromRole="CARTS" ToRole="ORDERS" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_CustomerCart" FromRole="CARTS" ToRole="CUSTOMERS" />
+        </EntityType>
+        <EntityType Name="CITy">
+          <Key>
+            <PropertyRef Name="City1" />
+          </Key>
+          <Property Name="City1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CUSTOMERS" Relationship="Self.City1" FromRole="CITIES" ToRole="CUSTOMERS" />
+        </EntityType>
+        <EntityType Name="COUNTRy">
+          <Key>
+            <PropertyRef Name="Country1" />
+          </Key>
+          <Property Name="Country1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CUSTOMERS" Relationship="Self.Country1" FromRole="COUNTRIES" ToRole="CUSTOMERS" />
+        </EntityType>
+        <EntityType Name="CURRENT">
+          <Key>
+            <PropertyRef Name="Barcode" />
+            <PropertyRef Name="FinalProduct" />
+          </Key>
+          <Property Name="Barcode" Type="Int32" Nullable="false" />
+          <Property Name="FinalProduct" Type="Int32" Nullable="false" />
+          <Property Name="AmountPurchased" Type="Int32" Nullable="false" />
+          <Property Name="GeneratedPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PlacedIn" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Includes" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CART" Relationship="Self.FK__CURRENTS__Placed__118A8A8C" FromRole="CURRENTS" ToRole="CARTS" />
+          <NavigationProperty Name="DESIGN" Relationship="Self.FK__CURRENTS__Includ__127EAEC5" FromRole="CURRENTS" ToRole="DESIGNS" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="Mail" />
+          </Key>
+          <Property Name="Mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Street" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HomeNumber" Type="Int32" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CARTS" Relationship="Self.FK_CustomerCart" FromRole="CUSTOMERS" ToRole="CARTS" />
+          <NavigationProperty Name="CITy1" Relationship="Self.City1" FromRole="CUSTOMERS" ToRole="CITIES" />
+          <NavigationProperty Name="COUNTRy1" Relationship="Self.Country1" FromRole="CUSTOMERS" ToRole="COUNTRIES" />
+          <NavigationProperty Name="ORDERS" Relationship="Self.FK__ORDERS__PlacedBy__164F3FA9" FromRole="CUSTOMERS" ToRole="ORDERS" />
+          <NavigationProperty Name="SEARCHES" Relationship="Self.FK__SEARCHES__UsedBy__08F5448B" FromRole="CUSTOMERS" ToRole="SEARCHES" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__USERS__Mail__033C6B35" FromRole="CUSTOMERS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="DESIGN">
+          <Key>
+            <PropertyRef Name="DesignID" />
+          </Key>
+          <Property Name="DesignID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FontType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FontSize" Type="Int32" />
+          <Property Name="FontColor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Picture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EntranceDT" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EntranceTime" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="CURRENTS" Relationship="Self.FK__CURRENTS__Includ__127EAEC5" FromRole="DESIGNS" ToRole="CURRENTS" />
+          <NavigationProperty Name="SEARCH" Relationship="Self.FK__DESIGNS__0BD1B136" FromRole="DESIGNS" ToRole="SEARCHES" />
+          <NavigationProperty Name="TEXTS" Relationship="Self.FK_design" FromRole="DESIGNS" ToRole="TEXTS" />
+          <NavigationProperty Name="FONT_COLORS" Relationship="Self.FontColor" FromRole="DESIGNS" ToRole="FONT_COLORS" />
+          <NavigationProperty Name="FONT" Relationship="Self.FontType" FromRole="DESIGNS" ToRole="FONTS" />
+        </EntityType>
+        <EntityType Name="FONT_COLORS">
+          <Key>
+            <PropertyRef Name="FontColor" />
+          </Key>
+          <Property Name="FontColor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DESIGNS" Relationship="Self.FontColor" FromRole="FONT_COLORS" ToRole="DESIGNS" />
+        </EntityType>
+        <EntityType Name="FONT">
+          <Key>
+            <PropertyRef Name="FontType" />
+          </Key>
+          <Property Name="FontType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DESIGNS" Relationship="Self.FontType" FromRole="FONTS" ToRole="DESIGNS" />
+        </EntityType>
+        <EntityType Name="MATERIAL">
+          <Key>
+            <PropertyRef Name="Material1" />
+          </Key>
+          <Property Name="Material1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CAPS" Relationship="Self.Material1" FromRole="MATERIALS" ToRole="CAPS" />
+        </EntityType>
+        <EntityType Name="ORDER">
+          <Key>
+            <PropertyRef Name="OrderNumber" />
+          </Key>
+          <Property Name="OrderNumber" Type="Int32" Nullable="false" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentNumber" Type="Int32" />
+          <Property Name="DateOfOrder" Type="DateTime" Precision="0" />
+          <Property Name="Coupon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CardNumber" Type="Int32" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="0" />
+          <Property Name="CVV" Type="Int32" />
+          <Property Name="CartID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PlacedBy" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CART" Relationship="Self.FK__ORDERS__CartID__155B1B70" FromRole="ORDERS" ToRole="CARTS" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__ORDERS__PlacedBy__164F3FA9" FromRole="ORDERS" ToRole="CUSTOMERS" />
+          <NavigationProperty Name="PAYMENT_METHODS" Relationship="Self.PaymentMethod" FromRole="ORDERS" ToRole="PAYMENT_METHODS" />
+        </EntityType>
+        <EntityType Name="PAYMENT_METHODS">
+          <Key>
+            <PropertyRef Name="PaymentMethod" />
+          </Key>
+          <Property Name="PaymentMethod" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ORDERS" Relationship="Self.PaymentMethod" FromRole="PAYMENT_METHODS" ToRole="ORDERS" />
+        </EntityType>
+        <EntityType Name="SEARCH">
+          <Key>
+            <PropertyRef Name="IPAddress" />
+            <PropertyRef Name="EntranceDT" />
+            <PropertyRef Name="EntranceTime" />
+          </Key>
+          <Property Name="IPAddress" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EntranceDT" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EntranceTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="SearchValue" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UsedBy" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__SEARCHES__UsedBy__08F5448B" FromRole="SEARCHES" ToRole="CUSTOMERS" />
+          <NavigationProperty Name="DESIGNS" Relationship="Self.FK__DESIGNS__0BD1B136" FromRole="SEARCHES" ToRole="DESIGNS" />
+        </EntityType>
+        <EntityType Name="STYLE">
+          <Key>
+            <PropertyRef Name="Style1" />
+          </Key>
+          <Property Name="Style1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CAPS" Relationship="Self.Style1" FromRole="STYLES" ToRole="CAPS" />
+        </EntityType>
+        <EntityType Name="TEXT">
+          <Key>
+            <PropertyRef Name="DesignID" />
+            <PropertyRef Name="Side" />
+          </Key>
+          <Property Name="DesignID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Side" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DESIGN" Relationship="Self.FK_design" FromRole="TEXTS" ToRole="DESIGNS" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="Mail" />
+          </Key>
+          <Property Name="Mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__USERS__Mail__033C6B35" FromRole="USERS" ToRole="CUSTOMERS" />
+        </EntityType>
+        <EntityType Name="MSreplication_options">
+          <Key>
+            <PropertyRef Name="optname" />
+            <PropertyRef Name="value" />
+            <PropertyRef Name="major_version" />
+            <PropertyRef Name="minor_version" />
+            <PropertyRef Name="revision" />
+            <PropertyRef Name="install_failures" />
+          </Key>
+          <Property Name="optname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="value" Type="Boolean" Nullable="false" />
+          <Property Name="major_version" Type="Int32" Nullable="false" />
+          <Property Name="minor_version" Type="Int32" Nullable="false" />
+          <Property Name="revision" Type="Int32" Nullable="false" />
+          <Property Name="install_failures" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spt_fallback_db">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="dbid" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xfallback_dbid" Type="Int16" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dbid" Type="Int16" Nullable="false" />
+          <Property Name="status" Type="Int16" Nullable="false" />
+          <Property Name="version" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spt_fallback_dev">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="low" />
+            <PropertyRef Name="high" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="phyname" />
+          </Key>
+          <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xfallback_low" Type="Int32" />
+          <Property Name="xfallback_drive" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="low" Type="Int32" Nullable="false" />
+          <Property Name="high" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int16" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phyname" Type="String" MaxLength="127" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spt_fallback_usg">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="dbid" />
+            <PropertyRef Name="segmap" />
+            <PropertyRef Name="lstart" />
+            <PropertyRef Name="sizepg" />
+            <PropertyRef Name="vstart" />
+          </Key>
+          <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xfallback_vstart" Type="Int32" />
+          <Property Name="dbid" Type="Int16" Nullable="false" />
+          <Property Name="segmap" Type="Int32" Nullable="false" />
+          <Property Name="lstart" Type="Int32" Nullable="false" />
+          <Property Name="sizepg" Type="Int32" Nullable="false" />
+          <Property Name="vstart" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spt_monitor">
+          <Key>
+            <PropertyRef Name="lastrun" />
+            <PropertyRef Name="cpu_busy" />
+            <PropertyRef Name="io_busy" />
+            <PropertyRef Name="idle" />
+            <PropertyRef Name="pack_received" />
+            <PropertyRef Name="pack_sent" />
+            <PropertyRef Name="connections" />
+            <PropertyRef Name="pack_errors" />
+            <PropertyRef Name="total_read" />
+            <PropertyRef Name="total_write" />
+            <PropertyRef Name="total_errors" />
+          </Key>
+          <Property Name="lastrun" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cpu_busy" Type="Int32" Nullable="false" />
+          <Property Name="io_busy" Type="Int32" Nullable="false" />
+          <Property Name="idle" Type="Int32" Nullable="false" />
+          <Property Name="pack_received" Type="Int32" Nullable="false" />
+          <Property Name="pack_sent" Type="Int32" Nullable="false" />
+          <Property Name="connections" Type="Int32" Nullable="false" />
+          <Property Name="pack_errors" Type="Int32" Nullable="false" />
+          <Property Name="total_read" Type="Int32" Nullable="false" />
+          <Property Name="total_write" Type="Int32" Nullable="false" />
+          <Property Name="total_errors" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="color">
+          <End Role="CAP_COLORS" Type="Self.CAP_COLORS" Multiplicity="0..1" />
+          <End Role="CAPS" Type="Self.CAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAP_COLORS">
+              <PropertyRef Name="color" />
+            </Principal>
+            <Dependent Role="CAPS">
+              <PropertyRef Name="Color" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Material1">
+          <End Role="MATERIALS" Type="Self.MATERIAL" Multiplicity="0..1" />
+          <End Role="CAPS" Type="Self.CAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIALS">
+              <PropertyRef Name="Material1" />
+            </Principal>
+            <Dependent Role="CAPS">
+              <PropertyRef Name="Material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Style1">
+          <End Role="STYLES" Type="Self.STYLE" Multiplicity="0..1" />
+          <End Role="CAPS" Type="Self.CAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STYLES">
+              <PropertyRef Name="Style1" />
+            </Principal>
+            <Dependent Role="CAPS">
+              <PropertyRef Name="Style" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CURRENTS__Placed__118A8A8C">
+          <End Role="CARTS" Type="Self.CART" Multiplicity="1" />
+          <End Role="CURRENTS" Type="Self.CURRENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARTS">
+              <PropertyRef Name="CartID" />
+            </Principal>
+            <Dependent Role="CURRENTS">
+              <PropertyRef Name="PlacedIn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERS__CartID__155B1B70">
+          <End Role="CARTS" Type="Self.CART" Multiplicity="1" />
+          <End Role="ORDERS" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARTS">
+              <PropertyRef Name="CartID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="CartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerCart">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="CARTS" Type="Self.CART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="Mail" />
+            </Principal>
+            <Dependent Role="CARTS">
+              <PropertyRef Name="BuiltBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="City1">
+          <End Role="CITIES" Type="Self.CITy" Multiplicity="0..1" />
+          <End Role="CUSTOMERS" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITIES">
+              <PropertyRef Name="City1" />
+            </Principal>
+            <Dependent Role="CUSTOMERS">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Country1">
+          <End Role="COUNTRIES" Type="Self.COUNTRy" Multiplicity="0..1" />
+          <End Role="CUSTOMERS" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTRIES">
+              <PropertyRef Name="Country1" />
+            </Principal>
+            <Dependent Role="CUSTOMERS">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CURRENTS__Includ__127EAEC5">
+          <End Role="DESIGNS" Type="Self.DESIGN" Multiplicity="1" />
+          <End Role="CURRENTS" Type="Self.CURRENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DESIGNS">
+              <PropertyRef Name="DesignID" />
+            </Principal>
+            <Dependent Role="CURRENTS">
+              <PropertyRef Name="Includes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERS__PlacedBy__164F3FA9">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="ORDERS" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="Mail" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="PlacedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEARCHES__UsedBy__08F5448B">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="SEARCHES" Type="Self.SEARCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="Mail" />
+            </Principal>
+            <Dependent Role="SEARCHES">
+              <PropertyRef Name="UsedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERS__Mail__033C6B35">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="Mail" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="Mail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DESIGNS__0BD1B136">
+          <End Role="SEARCHES" Type="Self.SEARCH" Multiplicity="1" />
+          <End Role="DESIGNS" Type="Self.DESIGN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEARCHES">
+              <PropertyRef Name="IPAddress" />
+              <PropertyRef Name="EntranceDT" />
+              <PropertyRef Name="EntranceTime" />
+            </Principal>
+            <Dependent Role="DESIGNS">
+              <PropertyRef Name="IPAddress" />
+              <PropertyRef Name="EntranceDT" />
+              <PropertyRef Name="EntranceTime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_design">
+          <End Role="DESIGNS" Type="Self.DESIGN" Multiplicity="1" />
+          <End Role="TEXTS" Type="Self.TEXT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DESIGNS">
+              <PropertyRef Name="DesignID" />
+            </Principal>
+            <Dependent Role="TEXTS">
+              <PropertyRef Name="DesignID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FontColor">
+          <End Role="FONT_COLORS" Type="Self.FONT_COLORS" Multiplicity="0..1" />
+          <End Role="DESIGNS" Type="Self.DESIGN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FONT_COLORS">
+              <PropertyRef Name="FontColor" />
+            </Principal>
+            <Dependent Role="DESIGNS">
+              <PropertyRef Name="FontColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FontType">
+          <End Role="FONTS" Type="Self.FONT" Multiplicity="0..1" />
+          <End Role="DESIGNS" Type="Self.DESIGN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FONTS">
+              <PropertyRef Name="FontType" />
+            </Principal>
+            <Dependent Role="DESIGNS">
+              <PropertyRef Name="FontType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PaymentMethod">
+          <End Role="PAYMENT_METHODS" Type="Self.PAYMENT_METHODS" Multiplicity="0..1" />
+          <End Role="ORDERS" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAYMENT_METHODS">
+              <PropertyRef Name="PaymentMethod" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="PaymentMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CAP_COLORS" EntityType="Self.CAP_COLORS" />
+          <EntitySet Name="CAPS" EntityType="Self.CAP" />
+          <EntitySet Name="CARTS" EntityType="Self.CART" />
+          <EntitySet Name="CITIES" EntityType="Self.CITy" />
+          <EntitySet Name="COUNTRIES" EntityType="Self.COUNTRy" />
+          <EntitySet Name="CURRENTS" EntityType="Self.CURRENT" />
+          <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMER" />
+          <EntitySet Name="DESIGNS" EntityType="Self.DESIGN" />
+          <EntitySet Name="FONT_COLORS" EntityType="Self.FONT_COLORS" />
+          <EntitySet Name="FONTS" EntityType="Self.FONT" />
+          <EntitySet Name="MATERIALS" EntityType="Self.MATERIAL" />
+          <EntitySet Name="ORDERS" EntityType="Self.ORDER" />
+          <EntitySet Name="PAYMENT_METHODS" EntityType="Self.PAYMENT_METHODS" />
+          <EntitySet Name="SEARCHES" EntityType="Self.SEARCH" />
+          <EntitySet Name="STYLES" EntityType="Self.STYLE" />
+          <EntitySet Name="TEXTS" EntityType="Self.TEXT" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <EntitySet Name="MSreplication_options" EntityType="Self.MSreplication_options" />
+          <EntitySet Name="spt_fallback_db" EntityType="Self.spt_fallback_db" />
+          <EntitySet Name="spt_fallback_dev" EntityType="Self.spt_fallback_dev" />
+          <EntitySet Name="spt_fallback_usg" EntityType="Self.spt_fallback_usg" />
+          <EntitySet Name="spt_monitor" EntityType="Self.spt_monitor" />
+          <AssociationSet Name="color" Association="Self.color">
+            <End Role="CAP_COLORS" EntitySet="CAP_COLORS" />
+            <End Role="CAPS" EntitySet="CAPS" />
+          </AssociationSet>
+          <AssociationSet Name="Material" Association="Self.Material1">
+            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="CAPS" EntitySet="CAPS" />
+          </AssociationSet>
+          <AssociationSet Name="Style" Association="Self.Style1">
+            <End Role="STYLES" EntitySet="STYLES" />
+            <End Role="CAPS" EntitySet="CAPS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CURRENTS__Placed__118A8A8C" Association="Self.FK__CURRENTS__Placed__118A8A8C">
+            <End Role="CARTS" EntitySet="CARTS" />
+            <End Role="CURRENTS" EntitySet="CURRENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERS__CartID__155B1B70" Association="Self.FK__ORDERS__CartID__155B1B70">
+            <End Role="CARTS" EntitySet="CARTS" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerCart" Association="Self.FK_CustomerCart">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="CARTS" EntitySet="CARTS" />
+          </AssociationSet>
+          <AssociationSet Name="City" Association="Self.City1">
+            <End Role="CITIES" EntitySet="CITIES" />
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+          </AssociationSet>
+          <AssociationSet Name="Country" Association="Self.Country1">
+            <End Role="COUNTRIES" EntitySet="COUNTRIES" />
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CURRENTS__Includ__127EAEC5" Association="Self.FK__CURRENTS__Includ__127EAEC5">
+            <End Role="DESIGNS" EntitySet="DESIGNS" />
+            <End Role="CURRENTS" EntitySet="CURRENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERS__PlacedBy__164F3FA9" Association="Self.FK__ORDERS__PlacedBy__164F3FA9">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEARCHES__UsedBy__08F5448B" Association="Self.FK__SEARCHES__UsedBy__08F5448B">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="SEARCHES" EntitySet="SEARCHES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERS__Mail__033C6B35" Association="Self.FK__USERS__Mail__033C6B35">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DESIGNS__0BD1B136" Association="Self.FK__DESIGNS__0BD1B136">
+            <End Role="SEARCHES" EntitySet="SEARCHES" />
+            <End Role="DESIGNS" EntitySet="DESIGNS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_design" Association="Self.FK_design">
+            <End Role="DESIGNS" EntitySet="DESIGNS" />
+            <End Role="TEXTS" EntitySet="TEXTS" />
+          </AssociationSet>
+          <AssociationSet Name="FontColor" Association="Self.FontColor">
+            <End Role="FONT_COLORS" EntitySet="FONT_COLORS" />
+            <End Role="DESIGNS" EntitySet="DESIGNS" />
+          </AssociationSet>
+          <AssociationSet Name="FontType" Association="Self.FontType">
+            <End Role="FONTS" EntitySet="FONTS" />
+            <End Role="DESIGNS" EntitySet="DESIGNS" />
+          </AssociationSet>
+          <AssociationSet Name="PaymentMethod" Association="Self.PaymentMethod">
+            <End Role="PAYMENT_METHODS" EntitySet="PAYMENT_METHODS" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities">
+          <EntitySetMapping Name="CAP_COLORS">
+            <EntityTypeMapping TypeName="masterModel.CAP_COLORS">
+              <MappingFragment StoreEntitySet="CAP_COLORS">
+                <ScalarProperty Name="color" ColumnName="color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAPS">
+            <EntityTypeMapping TypeName="masterModel.CAP">
+              <MappingFragment StoreEntitySet="CAPS">
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CARTS">
+            <EntityTypeMapping TypeName="masterModel.CART">
+              <MappingFragment StoreEntitySet="CARTS">
+                <ScalarProperty Name="CartID" ColumnName="CartID" />
+                <ScalarProperty Name="DeliveryType" ColumnName="DeliveryType" />
+                <ScalarProperty Name="DeliveryCost" ColumnName="DeliveryCost" />
+                <ScalarProperty Name="BuiltBy" ColumnName="BuiltBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CITIES">
+            <EntityTypeMapping TypeName="masterModel.CITy">
+              <MappingFragment StoreEntitySet="CITIES">
+                <ScalarProperty Name="City1" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COUNTRIES">
+            <EntityTypeMapping TypeName="masterModel.COUNTRy">
+              <MappingFragment StoreEntitySet="COUNTRIES">
+                <ScalarProperty Name="Country1" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CURRENTS">
+            <EntityTypeMapping TypeName="masterModel.CURRENT">
+              <MappingFragment StoreEntitySet="CURRENTS">
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="FinalProduct" ColumnName="FinalProduct" />
+                <ScalarProperty Name="AmountPurchased" ColumnName="AmountPurchased" />
+                <ScalarProperty Name="GeneratedPrice" ColumnName="GeneratedPrice" />
+                <ScalarProperty Name="PlacedIn" ColumnName="PlacedIn" />
+                <ScalarProperty Name="Includes" ColumnName="Includes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMERS">
+            <EntityTypeMapping TypeName="masterModel.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMERS">
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="HomeNumber" ColumnName="HomeNumber" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DESIGNS">
+            <EntityTypeMapping TypeName="masterModel.DESIGN">
+              <MappingFragment StoreEntitySet="DESIGNS">
+                <ScalarProperty Name="DesignID" ColumnName="DesignID" />
+                <ScalarProperty Name="FontType" ColumnName="FontType" />
+                <ScalarProperty Name="FontSize" ColumnName="FontSize" />
+                <ScalarProperty Name="FontColor" ColumnName="FontColor" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="EntranceDT" ColumnName="EntranceDT" />
+                <ScalarProperty Name="EntranceTime" ColumnName="EntranceTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FONT_COLORS">
+            <EntityTypeMapping TypeName="masterModel.FONT_COLORS">
+              <MappingFragment StoreEntitySet="FONT_COLORS">
+                <ScalarProperty Name="FontColor" ColumnName="FontColor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FONTS">
+            <EntityTypeMapping TypeName="masterModel.FONT">
+              <MappingFragment StoreEntitySet="FONTS">
+                <ScalarProperty Name="FontType" ColumnName="FontType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MATERIALS">
+            <EntityTypeMapping TypeName="masterModel.MATERIAL">
+              <MappingFragment StoreEntitySet="MATERIALS">
+                <ScalarProperty Name="Material1" ColumnName="Material" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERS">
+            <EntityTypeMapping TypeName="masterModel.ORDER">
+              <MappingFragment StoreEntitySet="ORDERS">
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="PaymentNumber" ColumnName="PaymentNumber" />
+                <ScalarProperty Name="DateOfOrder" ColumnName="DateOfOrder" />
+                <ScalarProperty Name="Coupon" ColumnName="Coupon" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+                <ScalarProperty Name="CartID" ColumnName="CartID" />
+                <ScalarProperty Name="PlacedBy" ColumnName="PlacedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAYMENT_METHODS">
+            <EntityTypeMapping TypeName="masterModel.PAYMENT_METHODS">
+              <MappingFragment StoreEntitySet="PAYMENT_METHODS">
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEARCHES">
+            <EntityTypeMapping TypeName="masterModel.SEARCH">
+              <MappingFragment StoreEntitySet="SEARCHES">
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="EntranceDT" ColumnName="EntranceDT" />
+                <ScalarProperty Name="EntranceTime" ColumnName="EntranceTime" />
+                <ScalarProperty Name="SearchValue" ColumnName="SearchValue" />
+                <ScalarProperty Name="UsedBy" ColumnName="UsedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STYLES">
+            <EntityTypeMapping TypeName="masterModel.STYLE">
+              <MappingFragment StoreEntitySet="STYLES">
+                <ScalarProperty Name="Style1" ColumnName="Style" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEXTS">
+            <EntityTypeMapping TypeName="masterModel.TEXT">
+              <MappingFragment StoreEntitySet="TEXTS">
+                <ScalarProperty Name="DesignID" ColumnName="DesignID" />
+                <ScalarProperty Name="Side" ColumnName="Side" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="masterModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordID" ColumnName="PasswordID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MSreplication_options">
+            <EntityTypeMapping TypeName="masterModel.MSreplication_options">
+              <MappingFragment StoreEntitySet="MSreplication_options">
+                <ScalarProperty Name="optname" ColumnName="optname" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="major_version" ColumnName="major_version" />
+                <ScalarProperty Name="minor_version" ColumnName="minor_version" />
+                <ScalarProperty Name="revision" ColumnName="revision" />
+                <ScalarProperty Name="install_failures" ColumnName="install_failures" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spt_fallback_db">
+            <EntityTypeMapping TypeName="masterModel.spt_fallback_db">
+              <MappingFragment StoreEntitySet="spt_fallback_db">
+                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+                <ScalarProperty Name="xfallback_dbid" ColumnName="xfallback_dbid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="dbid" ColumnName="dbid" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="version" ColumnName="version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spt_fallback_dev">
+            <EntityTypeMapping TypeName="masterModel.spt_fallback_dev">
+              <MappingFragment StoreEntitySet="spt_fallback_dev">
+                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+                <ScalarProperty Name="xfallback_low" ColumnName="xfallback_low" />
+                <ScalarProperty Name="xfallback_drive" ColumnName="xfallback_drive" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phyname" ColumnName="phyname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spt_fallback_usg">
+            <EntityTypeMapping TypeName="masterModel.spt_fallback_usg">
+              <MappingFragment StoreEntitySet="spt_fallback_usg">
+                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+                <ScalarProperty Name="xfallback_vstart" ColumnName="xfallback_vstart" />
+                <ScalarProperty Name="dbid" ColumnName="dbid" />
+                <ScalarProperty Name="segmap" ColumnName="segmap" />
+                <ScalarProperty Name="lstart" ColumnName="lstart" />
+                <ScalarProperty Name="sizepg" ColumnName="sizepg" />
+                <ScalarProperty Name="vstart" ColumnName="vstart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spt_monitor">
+            <EntityTypeMapping TypeName="masterModel.spt_monitor">
+              <MappingFragment StoreEntitySet="spt_monitor">
+                <ScalarProperty Name="lastrun" ColumnName="lastrun" />
+                <ScalarProperty Name="cpu_busy" ColumnName="cpu_busy" />
+                <ScalarProperty Name="io_busy" ColumnName="io_busy" />
+                <ScalarProperty Name="idle" ColumnName="idle" />
+                <ScalarProperty Name="pack_received" ColumnName="pack_received" />
+                <ScalarProperty Name="pack_sent" ColumnName="pack_sent" />
+                <ScalarProperty Name="connections" ColumnName="connections" />
+                <ScalarProperty Name="pack_errors" ColumnName="pack_errors" />
+                <ScalarProperty Name="total_read" ColumnName="total_read" />
+                <ScalarProperty Name="total_write" ColumnName="total_write" />
+                <ScalarProperty Name="total_errors" ColumnName="total_errors" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
